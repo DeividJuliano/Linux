@@ -7,6 +7,7 @@ ifconfig
 ifconfig -a  #mostra todas as interfaces, incluindo as inativas
 ifconfig enp0s8 down  #desligar interface
 ifconfig enp0s8 up  #ligar interface
+ip link set enp0s8 down  #desliga a interface
 arp -a  #tabela mac
 ifconfig enp0s8 hw 08:00:00:b0:b0:ca #mudar o mac da interface, útil para saber conflito de mac,(desative a interface)
 ip addr flush dev  #remove endereços IP atribuídos a uma interface
@@ -18,6 +19,8 @@ ping -i 4  8.8.8.8 ping   #a cada 4 segundos
 ifconfig ethx 0 xxxx/xx #forma mais antiga
 ifconfig enp0s3 x.x.x.x netmask 255.255.255.0  #adicionar ip a interface, algumas distribuição essa configuração não é permanente, use o netplan
 route add default gw 192.168.1.254    #adiciona uma rota gateway padrão
+route add -host 10.10.200.254/32 gw 192.168.1.55      #rota para apenas um local, endereço
+route add -net 172.16.1.0/25 gw 192.168.1.75      #rota para rede 172.16.1.0/25 
 route -n    #saber o gateway
 route #tabela de roteamento
 shutdown -r now  #reiniciar
@@ -26,14 +29,15 @@ sudo poweroff    #desligar servidor Ubuntu
 ssh nomeusuario@ip-remoto #para acessar um sevidor, host
 ip addr  #mostrar o ip
 sudo cat /etc/NetworkManager/system-connections/Wired\ connection\ 1   #mostrar configurações de redes ?
-cat /etc/network/interfaces   #coonfigurações de redes
+cat /etc/network/interfaces   #configurações de redes
 ip route show
 resolvectl   #saber onde resolve o dns
 last #informações de quem logou
 w   #informações de quem logou de forma mais precisa
 cat /etc/hosts  #saber os dispositivos
+
  
 
 
-(48,10)
+(102)
 
