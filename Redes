@@ -28,7 +28,7 @@ route add -net 172.16.1.0/25 gw 192.168.1.75      #rota para rede 172.16.1.0/25 
 ip route del 172.16.1.0/25 via 192.168.1.75      #exclui a rota para rede 172.16.1.0/25 
 ip route add 172.16.1.0/25 via 192.168.1.75 dev enp0s3      #adiciona a rota para rede 172.16.1.0/25
 ip route add 10.10.100.250/32 via 192.168.1.55 dev enp0s3      #adiciona a rota para um host 10.10.100.250/25
-
+ip route add default via 192.168.254 dev enp0s3
 route -n    #saber o gateway
 route #tabela de roteamento
 ip route show  
@@ -51,7 +51,5 @@ systemctl stop NetworkManager.service   #derrubar o servicço de rede em segundo
 
  
 
-
-(128)
 
 
