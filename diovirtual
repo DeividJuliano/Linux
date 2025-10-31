@@ -1,0 +1,8 @@
+# Criando máquina virtual na Azure, Home, Virtual machine, preencha os campos, modalidade gratuita.
+# Escolha a imagem Ubuntu Server 24.04 LTS -64 Gen2 (não escolha o ARM64), libere as portas 80,22 e 443.
+# Review + e create
+
+# Usando o WSL, (windows 11) vá no cmd 
+  wsl -- list --online
+  wsl -- install -d Ubuntu-24.04
+  (38.10)
