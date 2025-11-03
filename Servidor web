@@ -1,0 +1,33 @@
+# Criando máquina virtual na Azure, Home, Virtual machine, preencha os campos, modalidade gratuita.
+# Escolha a imagem Ubuntu Server 24.04 LTS -64 Gen2 (não escolha o ARM64), libere as portas 80,22 e 443.
+# Review + e create
+
+# Usando o WSL, (windows 11) vá no cmd 
+  wsl -- list --online
+  wsl -- install -d Ubuntu-24.04
+
+#depois de instalado é necessário atualizar.
+
+sudo apt-get update
+sudo apt-get upgrade -y
+
+#instalar o docker no ubuntu siga documentaçao official
+curl -fsSL https://get.docker.com -o get-docker.sh     # baixar o script de configuração
+sudo sh ./get-docker.sh --dry-run   # rodar o script
+sudo docker --version   #saber a versão do docker
+
+mkdir App   #cria a pasta App
+cd App/    #entra na pasta App
+nano index.html     #arquivo da aplicação cole um texto em html para teste e salve (ctrl o , talvez enter, ctrl x) 
+ls #para visualizar or arquivo
+
+
+#para o arquivo rodar é necssário ter ou SO para ouvir as requisições http que poderia ser um servidor apache, nginx e afins.., 
+#porém iremos fazer o arquivo rodar encapsulado em um container. Para criar um container é necessário um arquivo de configuração do container (47:35) 
+  
+
+
+  
+  
+  #Usar um containner (docker hub e afins algumas imagens base estão disponibilizads aqui. oracle, linux, mysql, apache, ...) através dessas 
+#imagens é possivel customizar, integrar para fazer funcionar as aplicações,
