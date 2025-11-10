@@ -33,7 +33,17 @@ WORKDIR /usr/local/apache2/htdocs/
 COPY . /usr/local/apache2/htdocs/
 EXPOSE 80
 
-#salve ctrl o ctrl x, na pasta App de um ls deve aparecer dockerfile  index.html (51:00)
+#salve ctrl o ctrl x, na pasta App de um ls deve aparecer dockerfile  index.html 
+sudo docker build -t micro1:1.0 .     #constrói uma imagem apartir do parametros especificados, -t é onde atribui o nome para a imagem. 
+#Para ser compartilhado no dockerhub pela internet seria necessário criar um usuário, se o dockerfile estiver em outro diretório seria
+# neccessário informar o caminho / no lugar do ponto e o camimho.
+# Pressione enter e depois da conclusão da imgem sudo docker images , irá  mostrar a imagem criada, 
+
+sudo docker run -d -p 80:80 --name micro1 micro1:1.0  #startar a imagem -d é para rodar em segundo plano, -p porta, 80 porta do host 80 porta do container, 
+# --name atribui nome depois nome e versão(TAG) caso der erro de porta usada, use  
+sudo docker ps -l # para lista os docker rodando exclua o docker 
+sudo docker rm xxxx --force   #exclui o docker xxxx de forma forçada  (55:10)
+
 
 
   
