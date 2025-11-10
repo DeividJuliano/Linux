@@ -23,7 +23,19 @@ ls #para visualizar or arquivo
 
 
 #para o arquivo rodar é necssário ter ou SO para ouvir as requisições http que poderia ser um servidor apache, nginx e afins.., 
-#porém iremos fazer o arquivo rodar encapsulado em um container. Para criar um container é necessário um arquivo de configuração do container (47:35) 
+#porém iremos fazer o arquivo rodar encapsulado em um container. Para criar um container é necessário um arquivo de configuração do container 
+#com as especificações de aplicação, arquivos que estarão contidos nele
+nano dockerfile   #arquivo de configuração do containere
+
+# No arquivo do docker file adicione esses parametros, ou no site oficial da imagem siga as instruções de como usa-la how to use this image
+FROM httpd:latest
+WORKDIR /usr/local/apache2/htdocs/
+COPY . /usr/local/apache2/htdocs/
+EXPOSE 80
+
+#salve ctrl o ctrl x, na pasta App de um ls deve aparecer dockerfile  index.html (51:00)
+
+
   
 
 
