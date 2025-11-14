@@ -42,7 +42,17 @@ sudo docker build -t micro1:1.0 .     #constrói uma imagem apartir do parametro
 sudo docker run -d -p 80:80 --name micro1 micro1:1.0  #startar a imagem -d é para rodar em segundo plano, -p porta, 80 porta do host 80 porta do container, 
 # --name atribui nome depois nome e versão(TAG) caso der erro de porta usada, use  
 sudo docker ps -l # para lista os docker rodando exclua o docker 
-sudo docker rm xxxx --force   #exclui o docker xxxx de forma forçada  (55:10)
+sudo docker ps  #
+sudo docker rm xxxx --force   #exclui o docker xxxx de forma forçada  
+sudo docker rmi --force  xxxx   #exclui a image do docker
+sudo docker images  #saber as images
+sudo systemctl status xxxx  #para saber se tem um serviço rodando, na porta 80, exclua a aplicação com esse comando sudo apt-get remove xxxx 
+#repita o comando para subir sua aplicação sudo docker run -d -p 80:80 --name micro1 micro1:1.0  teste digitando o ip da sua máquina(servidor)
+
+#Para fazer de forma automatizada pelo GitLab (similar ao GitHub)
+#Necessário ter uma conta no GitLab e ele deve se comunicar com a sua aplicação.
+#Log na sua conta, New project/repositório, Create blank project (106)
+
 
 
 
