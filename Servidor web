@@ -51,7 +51,11 @@ sudo systemctl status xxxx  #para saber se tem um serviço rodando, na porta 80,
 
 #Para fazer de forma automatizada pelo GitLab (similar ao GitHub)
 #Necessário ter uma conta no GitLab e ele deve se comunicar com a sua aplicação.
-#Log na sua conta, New project/repositório, Create blank project (106)
+#Log na sua conta, New project/repositório, Create blank project, Project name (xxxx), mantenha os paramentros em Project URL e Projec slug, 
+# Project deployment target não altere, Visibility Level marque Public, Project Configuration desmarque o Initialize......README, clique em Create project
+
+#É necessário que tudo que aconteça no servidor também aconteça no GitLab, para haver esse vinculo devemos cria o Runner. Cada Runner serve
+#para um projeto específico, vá em Settings, CI/CD, Runners (107:18)
 
 
 
