@@ -55,7 +55,22 @@ sudo systemctl status xxxx  #para saber se tem um serviço rodando, na porta 80,
 # Project deployment target não altere, Visibility Level marque Public, Project Configuration desmarque o Initialize......README, clique em Create project
 
 #É necessário que tudo que aconteça no servidor também aconteça no GitLab, para haver esse vinculo devemos cria o Runner. Cada Runner serve
-#para um projeto específico, vá em Settings, CI/CD, Runners (107:18)
+#para um projeto específico, vá em Settings, CI/CD, Runners, New project Runner, TAG (insira um nome, ou protocolo de integração exemplo WSL) 
+#Runner desrption(opcional), Create Runner, informe em qual plataforma a aplicação está rodando. Apartir de então siga os passos orientado pelo 
+#GitLab  (é necessário ter instalado o GitLab-runner registrer) Step 1, Step 2.....copie e cole os comandos. Em alguns comando use o sudo no início. 
+#Dessa forma será vinculado o GitLab (repositório  com o servidor) vá apertando enter e lendo as informações.(115:00)
+
+
+#Crie uma aplicação na sua máquina, crie uma pasta, ex: testemicro1, rode o vscode nessa pasta (no terminal digite code .) 
+#Crie uma pasta chamada App dentro da pasta testemicro, insira um código dentro dessa pasta (deve ser arquivo html) index.html  
+# Fora do App porém na pasta testemicro1 crie um arquivo dockerfile com os parametros do Dockerfile que já criamos
+FROM httpd:latest
+WORKDIR /usr/local/apache2/htdocs/
+COPY . /usr/local/apache2/htdocs/
+EXPOSE 80
+
+#Agora é necessário criar um pipeline para definir o que vai ser iniciado no servidor
+
 
 
 
