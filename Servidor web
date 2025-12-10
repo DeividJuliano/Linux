@@ -58,7 +58,9 @@ sudo systemctl status xxxx  #para saber se tem um serviço rodando, na porta 80,
 #para um projeto específico, vá em Settings, CI/CD, Runners, New project Runner, TAG (insira um nome, ou protocolo de integração exemplo WSL) 
 #Runner desrption(opcional), Create Runner, informe em qual plataforma a aplicação está rodando. Apartir de então siga os passos orientado pelo 
 #GitLab  (é necessário ter instalado o GitLab-runner registrer) Step 1, Step 2.....copie e cole os comandos. Em alguns comando use o sudo no início. 
-#Dessa forma será vinculado o GitLab (repositório  com o servidor) vá apertando enter e lendo as informações.(115:00)
+#Dessa forma será vinculado o GitLab (repositório  com o servidor) vá apertando enter e lendo as informações. Pedirá que você entre com um executor
+#digite shell que é o mais universal e enter (talvez pode da error pois se você estiver usando o WSL devido não ser o shell apropriado do linux. 
+#Digite sudo gitlab-runner run
 
 
 #Crie uma aplicação na sua máquina, crie uma pasta, ex: testemicro1, rode o vscode nessa pasta (no terminal digite code .) 
@@ -69,7 +71,8 @@ WORKDIR /usr/local/apache2/htdocs/
 COPY . /usr/local/apache2/htdocs/
 EXPOSE 80
 
-#Agora é necessário criar um pipeline para definir o que vai ser iniciado no servidor
+#Agora é necessário criar um pipeline para definir o que vai ser iniciado no servidor na pasta testemicro1 crie um arquivo 
+#.gitlab-ci.yml (defina os pararmetros, será necessário pesquisar o procedimento) 124:00
 
 
 
