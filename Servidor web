@@ -72,7 +72,12 @@ COPY . /usr/local/apache2/htdocs/
 EXPOSE 80
 
 #Agora é necessário criar um pipeline para definir o que vai ser iniciado no servidor na pasta testemicro1 crie um arquivo 
-#.gitlab-ci.yml (defina os pararmetros, será necessário pesquisar o procedimento) 124:00
+#.gitlab-ci.yml (defina os pararmetros, será necessário pesquisar o procedimento) * o profesor não conseguiu fazer de forma automática que manualmente seria 
+git init --initial-branch=main
+git remote add origin https://endereço ou url do lab que contem o paramentrosd apliaçao
+git add .  
+git coommit-n "App v.10"
+git push comit --set-upstream origin main  #talvez pedirá para logar ou dará erro porém mesmo assim irá subir (133:00)
 
 
 
