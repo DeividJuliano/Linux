@@ -77,7 +77,15 @@ git init --initial-branch=main
 git remote add origin https://endereço ou url do lab que contem o paramentrosd apliaçao
 git add .  
 git coommit-n "App v.10"
-git push comit --set-upstream origin main  #talvez pedirá para logar ou dará erro porém mesmo assim irá subir (133:00)
+git push comit --set-upstream origin main  #talvez pedirá para logar ou dará erro porém mesmo assim irá subir 
+
+#para fazer de forma automática
+sudo uname -a #conferi a distribuição do linux
+sudo apt-get update
+sudo apt-get upgrade -y  #após esse comando irá atualizar 
+curl -fsSL https://get.docker.com -o get-docker.sh  #baixa o script para realizar a automação de configuração
+sudo sh get-docker.sh    #executar o script de configuração, após a instalação de um sudo docker --version se aparecer a versão é por que deu certo  (140)
+
 
 
 
