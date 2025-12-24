@@ -85,6 +85,10 @@ sudo apt-get update
 sudo apt-get upgrade -y  #após esse comando irá atualizar 
 curl -fsSL https://get.docker.com -o get-docker.sh  #baixa o script para realizar a automação de configuração
 sudo sh get-docker.sh    #executar o script de configuração, após a instalação de um sudo docker --version se aparecer a versão é por que deu certo  (140)
+sudo curl -L "https:/.........../script.deb.sh | sudo bash    #copie e cole o comando similar seguindo o site oficial do docker
+sudo apt install gitlab-runner #instalar o runner
+# vá no seu GitLab.com, Build, Settings, CI/CD, Runners, clique no lápis para editar seu projeto.. preencha os parametros conforme o projeto nos campos Tag,
+#Runner description e clique em Create runner. clique em Linux e siga o tutorial do docker step1, step2....acrescente sudo nos comandos (145)
 
 
 
