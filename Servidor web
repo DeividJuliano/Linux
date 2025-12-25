@@ -88,10 +88,14 @@ sudo sh get-docker.sh    #executar o script de configuração, após a instalaç
 sudo curl -L "https:/.........../script.deb.sh | sudo bash    #copie e cole o comando similar seguindo o site oficial do docker
 sudo apt install gitlab-runner #instalar o runner
 # vá no seu GitLab.com, Build, Settings, CI/CD, Runners, clique no lápis para editar seu projeto.. preencha os parametros conforme o projeto nos campos Tag,
-#Runner description e clique em Create runner. clique em Linux e siga o tutorial do docker step1, step2....acrescente sudo nos comandos (145)
-
-
-
+#Runner description e clique em Create runner. clique em Linux e siga o tutorial do docker step1, step2....acrescente sudo nos comandos, é necessário que os 
+#dados stejam tudo ok tag, nome e também é necessário consulta permissão que o GitLab tem para mexer no servidor cat /etc/passwd
+sudo usermod -aG docker gitlab-runner    #dar permissão ao usuário gitlab-runner para mexer no servidor. confira usando  cat /etc/passwd
+#no vscode de um  
+git add .     
+git commit -n "App v.1 - GCP"
+git push --set-upstream origin main
+# confira no GitLab.com Project, Build, Pipilines deverá ficar Status Running, clique em Running, em Build, clique em docker_images (148:03)
 
 
 
