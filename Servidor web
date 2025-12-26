@@ -95,9 +95,13 @@ sudo usermod -aG docker gitlab-runner    #dar permissão ao usuário gitlab-runn
 git add .     
 git commit -n "App v.1 - GCP"
 git push --set-upstream origin main
-# confira no GitLab.com Project, Build, Pipilines deverá ficar Status Running, clique em Running, em Build, clique em docker_images (148:03)
-
-
+# confira no GitLab.com Project, Build, Pipilines deverá ficar Status Running, clique em Running, em Build, clique em docker_images para visualizar, depois
+#em deploy para visualizar também.
+# No GCP para visulalizar o servidor na VM digite o IP externo dele no navegador, caso apresente problemas para acessar pode ser o Firewall, vá em Instâncias
+# VM, Firewalls, Editar, e habilite Allow HTTP traffic e Allow HTTPS traffic e Salvar. Agore tente acessar o navegador, Se aparecer It works está ok na parte 
+# do servidor porém era para conter os arquivos. No VSCODE analise a pastas com os arquivos index.html  .gitlab-ci.yml  dockerfile   (neste caso o erros estava 
+# no dockerfile o correto é  COPY /App/. /usr/local/apache2/htdocs./  altere e comite de novo   git add .   git commit -n "App v.1 corrigido - GCP"   
+git push --set-upstream origin main (153:7)
 
   
 
