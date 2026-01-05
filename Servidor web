@@ -18,7 +18,7 @@ sudo docker --version   #saber a versão do docker
 
 mkdir App   #cria a pasta App
 cd App/    #entra na pasta App
-nano index.html     #arquivo da aplicação cole um texto em html para teste e salve (ctrl o , talvez enter, ctrl x) 
+nano index.html     #arquivo da aplicação cole um texto em html para teste e salve (ctrl o , enter, ctrl x) 
 ls #para visualizar or arquivo
 
 
@@ -74,7 +74,7 @@ EXPOSE 80
 #Agora é necessário criar um pipeline para definir o que vai ser iniciado no servidor na pasta testemicro1 crie um arquivo 
 #.gitlab-ci.yml (defina os pararmetros, será necessário pesquisar o procedimento) * o profesor não conseguiu fazer de forma automática que manualmente seria 
 git init --initial-branch=main
-git remote add origin https://endereço ou url do lab que contem o paramentrosd apliaçao
+git remote add origin https://endereço ou url do lab que contém os paramentros da apliaçao
 git add .  
 git coommit-n "App v.10"
 git push comit --set-upstream origin main  #talvez pedirá para logar ou dará erro porém mesmo assim irá subir 
@@ -84,7 +84,7 @@ sudo uname -a #conferi a distribuição do linux
 sudo apt-get update
 sudo apt-get upgrade -y  #após esse comando irá atualizar 
 curl -fsSL https://get.docker.com -o get-docker.sh  #baixa o script para realizar a automação de configuração
-sudo sh get-docker.sh    #executar o script de configuração, após a instalação de um sudo docker --version se aparecer a versão é por que deu certo  (140)
+sudo sh get-docker.sh    #executar o script de configuração, após a instalação de um sudo docker --version se aparecer a versão é por que deu certo 
 sudo curl -L "https:/.........../script.deb.sh | sudo bash    #copie e cole o comando similar seguindo o site oficial do docker
 sudo apt install gitlab-runner #instalar o runner
 # vá no seu GitLab.com, Build, Settings, CI/CD, Runners, clique no lápis para editar seu projeto.. preencha os parametros conforme o projeto nos campos Tag,
@@ -101,7 +101,7 @@ git push --set-upstream origin main
 # VM, Firewalls, Editar, e habilite Allow HTTP traffic e Allow HTTPS traffic e Salvar. Agore tente acessar o navegador, Se aparecer It works está ok na parte 
 # do servidor porém era para conter os arquivos. No VSCODE analise a pastas com os arquivos index.html  .gitlab-ci.yml  dockerfile   (neste caso o erros estava 
 # no dockerfile o correto é  COPY /App/. /usr/local/apache2/htdocs./  altere e comite de novo   git add .   git commit -n "App v.1 corrigido - GCP"   
-git push --set-upstream origin main (153:7)
+git push --set-upstream origin main  #poderá ocorrer problemas com os jobs se tiver os mesmo nome, devido o docker está em execução.
 
   
 
