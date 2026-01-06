@@ -1,1 +1,42 @@
+shutdown 0  # desliga no mesmo instante
+sudo apt-get install openssh-server  #instala o programa
+sudo systemctl status ssh  #saber se o ssh está operante 
+sudo ufw status    #saber se o firewall está operante
+sudo ufw allow ssh   #liberar o ssh no firewall
+ip a         #mostra o ip
+ssh user@ip    #acessar o servidor
+sudo systemctl disable --now ssh  #desativa o ssh no mesmo instante sem precisar reiniciar
+sudo systemctl enable --now ssh  #ativa o ssh no mesmo instante sem precisar reiniciar
+sudo chmod 600 arquivo.pem     #para proteger o arquivo .pem
+date   #mostra a data
+
+Navegando pelo sistema de arquivo
+pwd    #mostra aonde você está
+cd /    #muda para a pasta raíz do seu disco, só use o barra se arquivo estiver na raiz, caso contrário use sem cd log
+./     #indica onde você está
+ls      #mostra os arquivos do diretório (cor azul)
+cd /var   # muda para o diretório var, se você estiver no diretório, pode usar o cd var
+cd ..     #volta para o diretório anterior
+cd ../backups   #volta e vai para o diretório backups
+cd /var/lib    #abre o lib dentro do var
+cd /var/lib/git   #vai para o git passando pelos diretórios raiz,var e lib
+
+O tab duas vezes mostra os comandos que você pode usar ou preenche na tela
+ls | more    #abre a opção de ver todos os arquivos que não cabe na tela toda, aperte enter caso apareça more, para sair use o ctrl c
+ls nome do arquivo    #lista o arquivo com esse nome
+touch arquivo.txt   #Criar um arquivo vazio se for criar em um diretório do sistema como /etc é necessário usar o sudo. Pode criar arquivo no diretório home, onde fica os usuários
+cd ~    #vai para o diretório home
+touch arquivo2.txt arquivo3.txt arquivo4.txt #cria vários arquivos
+cat nome do arquivo   #visualizar o arquivo
+
+Localiza arquivos
+ls /sys   #lista os arquivos contidos no diretório sys ls /~
+ls /sys/kernel   #lista os arquivos que estão no kernel que está dentro do sys
+ls /sys/kernel/p*  #lista os arquivos que começam com p que está dentro do kernel,que está dentro sys, ou seja de forma recursiva.
+find / -name  arq*    #busca o arquivo onde você está pelo nome ou pelo filtro de pesquisa que você indicar
+locate nomedoarquivo  #talvez seja necessário instalar  
+ls -R /etc/   #lista os arquivos de forma recursiva informando seu conteúdo ls -r
+tree 
+which git  #mostra o caminho do arquivo
+du ?  # 
 
