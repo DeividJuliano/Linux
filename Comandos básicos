@@ -1,3 +1,79 @@
+#Navegando pelo sistema de arquivo
+pwd    #mostra aonde você está
+cd /    #muda para a pasta raíz do seu disco, só use o barra se arquivo estiver na raiz, caso contrário use sem cd log
+./     #indica onde você está
+ls      #mostra os arquivos do diretório (cor azul)
+cd /var   # muda para o diretório var, se você estiver no diretório, pode usar o cd var
+cd ..     #volta para o diretório anterior
+cd ../backups   #volta e vai para o diretório backups
+cd /var/lib    #abre o lib dentro do var
+cd /var/lib/git   #vai para o git passando pelos diretórios raiz,var e lib
+
+#O tab duas vezes mostra os comandos que você pode usar ou preenche na tela
+ls | more    #abre a opção de ver todos os arquivos que não cabe na tela toda, aperte enter caso apareça more, para sair use o ctrl c
+ls nome do arquivo    #lista o arquivo com esse nome
+touch arquivo.txt   #Criar um arquivo vazio se for criar em um diretório do sistema como /etc é necessário usar o sudo. 
+#Pode criar arquivo no diretório home, onde fica os usuários
+cd ~    #vai para o diretório home
+touch arquivo2.txt arquivo3.txt arquivo4.txt #cria vários arquivos
+cat nome do arquivo   #visualizar o arquivo
+
+#Localiza arquivos
+ls /sys   #lista os arquivos contidos no diretório sys ls /~
+ls /sys/kernel   #lista os arquivos que estão no kernel que está dentro do sys
+ls /sys/kernel/p*  #lista os arquivos que começam com p que está dentro do kernel,que está dentro sys, ou seja de forma recursiva.
+find / -name  arq*    #busca o arquivo onde você está pelo nome ou pelo filtro de pesquisa que você indicar
+locate nomedoarquivo  #talvez seja necessário instalar  
+ls -R /etc/   #lista os arquivos de forma recursiva informando seu conteúdo ls -r
+tree 
+which git  #mostra o caminho do arquivo
+du ?  # 
+
+#Criando diretório
+mkdir /Documentos   #criar um diretório a partir da raiz  é necessário ter permissão.
+mkdir Documentos    #criar um diretório 
+touch arquivo.txt   #Criar um arquivo vazio
+mkdir /home/jose/excel/contas   #cria o diretório contas de forma recursiva 
+mkdir ‘Meus documentos’  #cria um diretório aceitando espaço, se não colocar aspas ele criará a pasta Meus e pasta Documentos
+
+
+#Excluindo arquivos e diretórios
+rmdir pasta3.txt    #exclui o diretório pasta3.txt, se for um diretório com conteúdo ele não deixa excluir será necessário limpar a pasta. 
+#Também não é possível apagar um diretório se você estiver dentro dele, é necessário sair.
+rm arquivo2.txt     #exclui o arquivo arquivo2.txt
+rm arquivo*     #apagar todos arquivos com esse nome
+rmdir Alunos Professores    #apaga os 2 diretórios de uma só vez
+rmdir ‘Meus Documentos’    #apagar o diretório Meus Documentos
+rm -rf  Planilhas/    #apagar de forma recursiva tudo dentro de do diretório Planilhas e tudo que há dentro delas 
+rm -rfv   #força para excluir e sinaliza o que está acontecendo 
+rm -rfvi  #força para excluir e sinaliza o que está acontecendo para você concordar ou não
+mv -i  #renomeia informando, muito cuidado com esse comando
+
+#Obtendo ajuda
+ls --help    #descreve as opções do ls
+man ls   #descreve o que faz o comando ls  (em inglês) aperte q para sair
+ls -l   #lista de comprimento longo, as informações iniciadas com - são arquivos, d diretórios, l links que redirecionam para outro local, 
+#rwx representam permissões, 4 quantidades de objetos (arquivos ou diretórios). root root representa o dono e grupo, 4096 representa o tamanho em kb, 
+#para um formato mais compreensível use o ls -lh
+ls -a  #mostra todos os objetos incluindo os ocultos pode usar também o ls -lah
+
+#Histórico de comandos
+history   #mostra os últimos comandos realizados até 1000 comandos
+history 10  #mostra os 10 últimos comandos, o comando listado no history pode ser utilizado se você usar !21, será dado 
+#o comando que aparece na lista 21 do history
+!!   #usa o último comando digitado 
+!?sys?    #executa o comando que foi usado recentemente que se inicia com sys
+history | grep  “Planilhas”  #mostra a ordem com o que comando foi digitado sem executar
+export HISTTIMEFORMAT=”%c ”  #habilitar o history para dar informações completa de quando o comando que você quer foi utilizado
+history -c   #apagar o histórico de comandos
+set +o history    #comando para que o histórico não seja mais armazenado
+set -o history    #comando para que volte a armazenar os comando no histórico
+
+#Executando tarefas administrativa como root
+cat /etc/group     #para visualizar os grupos
+sudo    #invoca a permissão de superusuário
+sudo cat /etc/sudoers  #arquivo de configuração que mostra os privilégios dos usuários
+tail -f /var/log/syslog    #comando para visualizar erros
 shutdown 0  # desliga no mesmo instante
 sudo apt-get install openssh-server  #instala o programa
 sudo systemctl status ssh  #saber se o ssh está operante 
@@ -10,33 +86,33 @@ sudo systemctl enable --now ssh  #ativa o ssh no mesmo instante sem precisar rei
 sudo chmod 600 arquivo.pem     #para proteger o arquivo .pem
 date   #mostra a data
 
-Navegando pelo sistema de arquivo
-pwd    #mostra aonde você está
-cd /    #muda para a pasta raíz do seu disco, só use o barra se arquivo estiver na raiz, caso contrário use sem cd log
-./     #indica onde você está
-ls      #mostra os arquivos do diretório (cor azul)
-cd /var   # muda para o diretório var, se você estiver no diretório, pode usar o cd var
-cd ..     #volta para o diretório anterior
-cd ../backups   #volta e vai para o diretório backups
-cd /var/lib    #abre o lib dentro do var
-cd /var/lib/git   #vai para o git passando pelos diretórios raiz,var e lib
+#Não é recomendado ficar logado como root, faça as configurações necessárias e depois use o usuário convencional.
 
-O tab duas vezes mostra os comandos que você pode usar ou preenche na tela
-ls | more    #abre a opção de ver todos os arquivos que não cabe na tela toda, aperte enter caso apareça more, para sair use o ctrl c
-ls nome do arquivo    #lista o arquivo com esse nome
-touch arquivo.txt   #Criar um arquivo vazio se for criar em um diretório do sistema como /etc é necessário usar o sudo. Pode criar arquivo no diretório home, onde fica os usuários
-cd ~    #vai para o diretório home
-touch arquivo2.txt arquivo3.txt arquivo4.txt #cria vários arquivos
+sudo passwd root   #concede a senha de superusuário para o usuário root, pedirá a senha que foi definida no momento da instalação. 
+#Agora defina uma senha para esse usuário
+su  #muda para superusuário em que não será necessário digitar sudo  
+su luiz  #muda para o usuário luiz
+poweroff   #desliga
+reboot     #reinicia 
+
+#É possível logar pelo Putty como root, porém essa configuração deve está liberada no ubuntu server
+
+#liberando o acesso remoto do usuário root
+cat /etc/ssh/sshd_config   #mostra o arquivo de configuração de acesso remoto 
+sudo nano /etc/ssh/sshd_config  #abre o arquivo em um editor de texto para poder configurá lo para o acesso remoto será necessário 
+#alterar o #PermitRootLogin prohibit-password para PermitRootLogin yes. ctrl o (salvar, enter para continuar com o mesmo nome) 
+#ctrl x  para sai 
+systemctl status sshd  #mostra o status do sshd ctrl c para sair talvez 2 vezes
+systemctl restart sshd    #reinicia o serviço sshd e agora o acesso remoto estará liberado
+
+Trabalhando com editores de arquivo
+vi leiame.txt     #se existir ele abre o arquivo, se não, ele cria e abre no editor vi (new file). 
+#Dentro do vi siga essas dicas pressione i modo de edição (insert). faça as alterações ou digite, quando finalizar sua tarefa 
+#pressione esc para sair do modo de inserção, para ativar o menu pressione : para sair salvando digite wq e enter . 
+#pronto seu texto está salvo.
 cat nome do arquivo   #visualizar o arquivo
 
-Localiza arquivos
-ls /sys   #lista os arquivos contidos no diretório sys ls /~
-ls /sys/kernel   #lista os arquivos que estão no kernel que está dentro do sys
-ls /sys/kernel/p*  #lista os arquivos que começam com p que está dentro do kernel,que está dentro sys, ou seja de forma recursiva.
-find / -name  arq*    #busca o arquivo onde você está pelo nome ou pelo filtro de pesquisa que você indicar
-locate nomedoarquivo  #talvez seja necessário instalar  
-ls -R /etc/   #lista os arquivos de forma recursiva informando seu conteúdo ls -r
-tree 
-which git  #mostra o caminho do arquivo
-du ?  # 
+nano leiame.txt     #se existir, ele abre o arquivo, se não, ele cria e abre no editor nano, o nano já têm explicação do seu uso 
+#na parte inferior do editor o acento chapéu ^ é o ctrl. ctrl o (salvar, enter para continuar com o mesmo nome)  ctrl x  para sai. 
+#lembre-se de indicar o caminho, para que o arquivo salvo não vá para outro local
 
