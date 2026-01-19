@@ -29,6 +29,28 @@ tree
 which git  #mostra o caminho do arquivo
 du ?  # 
 
+#Criando e excluindo usuários
+#Para esses comandos é necessário está como usuário root ou use o sudo
+getent passwd  #Obtém a lista de contas de usuário no sistema
+useradd joao.silva     #cria o usuário joao.silva, não deixe espaço nem use acento para evitar conflitos
+userdel -f joao.silva   #exclui o usuário
+useradd joao -m -c “ joão da Silva”   #cria o usuário com uma pasta no home com descrição do seu nome todo. O usuário criado terá como linha 
+#de comando o shell, e não o bash. Para alterar será necessário usar o comando chsh com seus respectivos parâmetros
+passwd joao   #comando para definir ou redefinir a senha do joao,
+chsh -- -s /bin/bash joao     #habilita o bash  para o joao ao invés do shell
+userdel -r -f joao   #apagar tudo referente ao joao, pastas emails
+useradd joao -m -c “ joão da Silva” -s /bin/bash  #cria o usuário com uma pasta no home com descrição do seu nome todo e com o shell 
+useradd joao -c  “ joão da Silva” -s /bin/bash -m -p $(openssl passwd -crypt senha123) #cria o usuário com uma descrição,com o bash, 
+#pasta no diretório home e exigência de senha encriptada, neste caso a senha encriptada é o 123. Comando que realmente funcionou 
+useradd convidado1 -c "Convidado" -s /bin/bash -m -p $(openssl passwd senha123)
+
+#Editando informações do usuário
+useradd maria -c “Convidado” -m -e 26/06/2022  #Esse usuário só acessa o sistema até essa data, você terá que atribuir
+#uma senha para esse usuário caso o sistema solicite.
+usermod guest -s /bin/bash  #modifica as configurações do usuário criado anteriormente
+passwd guest -e  #exigirá a mudança de senha quando o usuário logar
+cat /etc/passwd   #informações dos usuários criado
+
 #Criando diretório
 mkdir /Documentos   #criar um diretório a partir da raiz  é necessário ter permissão.
 mkdir Documentos    #criar um diretório 
@@ -115,4 +137,57 @@ cat nome do arquivo   #visualizar o arquivo
 nano leiame.txt     #se existir, ele abre o arquivo, se não, ele cria e abre no editor nano, o nano já têm explicação do seu uso 
 #na parte inferior do editor o acento chapéu ^ é o ctrl. ctrl o (salvar, enter para continuar com o mesmo nome)  ctrl x  para sai. 
 #lembre-se de indicar o caminho, para que o arquivo salvo não vá para outro local
+
+#Shell Script Criando usuários em lote.Tarefa para ser usado de forma automática 
+cd /   #vai para a raíz
+mkdir /scripts     #cria uma pasta com o nome scripts
+cd /scripts      #muda para pasta scripts
+nano criar_user.sh    #abre o nano com o arquivo criar_user.sh
+
+#Dentro do nano criaremos o script
+#!/bin/bash          #indica que é um script em bin
+echo “Criando usuário do sistema….”   #exibir mensagem na tela
+useradd guest10 -c “Usuário experimental” -s /bin/bash -m -p $(open passpwd -crypt Senha123)  #cria o usuário com o nome guest10 uma descrição Usuário experimental,
+#com o bash, pasta no diretório home e exigência de senha encriptada, neste caso a senha encriptada é o 123.Comando que realmente funcionou foi esse abaixo
+useradd guest10 -c "Usuário experimental" -s /bin/bash -m echo "guest10:$(openssl passwd -crypt Senha123)"
+passwd guest -e   #força o usuário a trocar a senha
+echo “Finalizado!!”  #exibe a mensagem na tela
+
+#Aperte ctrl o para salvar e ctrl x para sair. No sistema a ser utilizado será necessário habilitar permissão de execução para esse arquivo.
+#no diretório scripts ou onde for inserido esse arquivo chmod +x criar_user.sh    #permissão para executar o arquivo  criar_user.sh no bash ele irá mudar de cor.
+./criar_user.sh  #executar esse arquivo
+cat /etc/passwd   #mostra os usuário criados.Tente logar pelo putty com os usuários criados para validar se deu certo.
+
+#Formato para uso do script, se necessário copie e cole alterando o nome e senha para mais usuários
+#!/bin/bash
+
+echo “Criando usuário do sistema….”
+useradd guest10 -c “Usuário experimental” -s /bin/bash -m -p $(open passpwd -crypt Senha123)
+passwd guest -e
+useradd guest11 -c “Usuário experimental” -s /bin/bash -m -p $(open passpwd -crypt Senha234)
+passwd guest -e
+useradd guest12 -c “Usuário experimental” -s /bin/bash -m -p $(open passpwd -crypt Senha345)
+passwd guest -e
+echo “Finalizado!!”
+
+#Talvez seja necessário remover o menos -p para dar certo
+
+Adicionando usuário a grupos
+
+ usermod -aG adm,sudo mariana   #adiciona a mariana no grupo adm e grupo sudo sem remover os grupos existentes, talvez seja necessário
+#logar novamente para as configurações ativar nas conta, 
+cat /etc/group  #comando para visualizar os grupos
+
+#Criar grupos
+groupadd DDD_ADM     #cria grupo com o nome DDD_ADM
+groupdel DDD_ADM     #exclui o grupo, se estiver com usuário não será possível, tem que excluir o usuário primeiro.
+useradd joao -c  “ joão da Silva” -s /bin/bash -m -p $(openssl passwd -crypt senha123) -G DDD_ADM  #cria o usuário com uma descrição,
+#com o bash, pasta no diretório home, exigência de senha encriptada, neste caso a senha encriptada é o 123, e o adiciona no grupo DDD_adm
+usermod -G DDD_ADM mariana   #remove mariana do grupo que ela estiver e coloca no grupo DDD_ADM, para manter ela em outros grupos 
+#use a vírgula e o nome do grupo desejado.
+gpasswd -d mariana sudo   #remove do usuário sudo
+
+
+
+
 
