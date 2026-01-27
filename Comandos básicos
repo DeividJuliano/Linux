@@ -51,6 +51,44 @@ usermod guest -s /bin/bash  #modifica as configurações do usuário criado ante
 passwd guest -e  #exigirá a mudança de senha quando o usuário logar
 cat /etc/passwd   #informações dos usuários criado
 
+#Adicionando usuário a grupos
+usermod -aG adm,sudo mariana   #adiciona a mariana no grupo adm e grupo sudo sem remover os grupos existentes, talvez seja necessário
+#logar novamente para as configurações ativar nas conta, 
+cat /etc/group  #comando para visualizar os grupos
+
+#Criar grupos
+groupadd DDD_ADM     #cria grupo com o nome DDD_ADM
+groupdel DDD_ADM     #exclui o grupo, se estiver com usuário não será possível, tem que excluir o usuário primeiro.
+useradd joao -c  “ joão da Silva” -s /bin/bash -m -p $(openssl passwd -crypt senha123) -G DDD_ADM  #cria o usuário com uma descrição,
+#com o bash, pasta no diretório home, exigência de senha encriptada, neste caso a senha encriptada é o 123, e o adiciona no grupo DDD_adm
+usermod -G DDD_ADM mariana   #remove mariana do grupo que ela estiver e coloca no grupo DDD_ADM, para manter ela em outros grupos 
+#use a vírgula e o nome do grupo desejado.
+gpasswd -d mariana sudo   #remove do usuário sudo
+
+#Sistema de Permissões
+#No diretório home com o comando ls -l mostra os usuários e suas permissões
+#as letras representam: D(DIRETÓRIO) - (ARQUIVOS) RWX(DONO) RWX(GRUPO) RWX(OUTROS) 
+chown mariana:DDD_ADM /adm   #habilitar a usuária mariana para ler, gravar e executar, ela passa a ser proprietária.
+chown mariana:DDD_ADM /ven  #permite a mariana a ser dona do grupo DDD_ADM  e o  diretório  ven
+
+
+#Alterando as permissões de arquivos
+#Base numérica para permissão de arquivos , R4 W2 X1. 7 equivale a permissão total, 0 permissão nenhuma, 
+#1 execução, 3 leitura e gravação, 5 execução e leitura
+chmod 750 /adm/  #o dono terá permissão total, o grupo terá permissão de execução e leitura, outros permissões nenhuma no diretório adm
+chmod 775 /ven   #dono permissão total, grupo permissão total, outros leitura e execução
+chown root:GRP_ADM texto-adm.txt    #muda as permissões de um arquivo e específico, faça no modo superusuário
+chmod 750 texto-adm.txt   #permissão específica rwx rx-  ---
+chmod 777 /publica   #permissão total para todos para o diretório publica 
+
+#Permissão de execução
+#Mesmo como root arquivos de execução (.sh) necessita de alteração de execução arquivo date.sh
+chmod 744 date.sh   #habilita o root para permissão total e grupo e outros para leitura arquivo date.sh
+chmod 644 date.sh  #habilita leitura e gravação para o root e leitura para grupos e outros arquivo date.sh
+chmod +x date.sh   #habilita a execução para o dono arquivo date.sh
+chmod -x date.sh  #remove a permissão de execução do root para o arquivo date.sh
+
+
 #Criando diretório
 mkdir /Documentos   #criar um diretório a partir da raiz  é necessário ter permissão.
 mkdir Documentos    #criar um diretório 
@@ -107,6 +145,8 @@ sudo systemctl disable --now ssh  #desativa o ssh no mesmo instante sem precisar
 sudo systemctl enable --now ssh  #ativa o ssh no mesmo instante sem precisar reiniciar
 sudo chmod 600 arquivo.pem     #para proteger o arquivo .pem
 date   #mostra a data
+sudo /bin/sh /xxxxxx/script/monitor.sh enable #xxx equivale para o nome so sistema, esse comando habilita a interface gráfica,
+# em servidor oracle linux
 
 #Não é recomendado ficar logado como root, faça as configurações necessárias e depois use o usuário convencional.
 
@@ -127,7 +167,7 @@ sudo nano /etc/ssh/sshd_config  #abre o arquivo em um editor de texto para poder
 systemctl status sshd  #mostra o status do sshd ctrl c para sair talvez 2 vezes
 systemctl restart sshd    #reinicia o serviço sshd e agora o acesso remoto estará liberado
 
-Trabalhando com editores de arquivo
+#Trabalhando com editores de arquivo
 vi leiame.txt     #se existir ele abre o arquivo, se não, ele cria e abre no editor vi (new file). 
 #Dentro do vi siga essas dicas pressione i modo de edição (insert). faça as alterações ou digite, quando finalizar sua tarefa 
 #pressione esc para sair do modo de inserção, para ativar o menu pressione : para sair salvando digite wq e enter . 
@@ -172,20 +212,9 @@ echo “Finalizado!!”
 
 #Talvez seja necessário remover o menos -p para dar certo
 
-Adicionando usuário a grupos
 
- usermod -aG adm,sudo mariana   #adiciona a mariana no grupo adm e grupo sudo sem remover os grupos existentes, talvez seja necessário
-#logar novamente para as configurações ativar nas conta, 
-cat /etc/group  #comando para visualizar os grupos
 
-#Criar grupos
-groupadd DDD_ADM     #cria grupo com o nome DDD_ADM
-groupdel DDD_ADM     #exclui o grupo, se estiver com usuário não será possível, tem que excluir o usuário primeiro.
-useradd joao -c  “ joão da Silva” -s /bin/bash -m -p $(openssl passwd -crypt senha123) -G DDD_ADM  #cria o usuário com uma descrição,
-#com o bash, pasta no diretório home, exigência de senha encriptada, neste caso a senha encriptada é o 123, e o adiciona no grupo DDD_adm
-usermod -G DDD_ADM mariana   #remove mariana do grupo que ela estiver e coloca no grupo DDD_ADM, para manter ela em outros grupos 
-#use a vírgula e o nome do grupo desejado.
-gpasswd -d mariana sudo   #remove do usuário sudo
+
 
 
 
