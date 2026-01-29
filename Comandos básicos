@@ -209,8 +209,68 @@ passwd guest -e
 useradd guest12 -c “Usuário experimental” -s /bin/bash -m -p $(open passpwd -crypt Senha345)
 passwd guest -e
 echo “Finalizado!!”
-
 #Talvez seja necessário remover o menos -p para dar certo
+
+#Gerenciamento de pacotes (Ubuntu-Debian)
+apt-get  #ideal para script, não tem muitas interrupções, também não dá muitas informações apt-get --help  #informa os parâmetros a ser usado
+apt-get update  #atualiza a lista de pacotes da distribuição que você está usando
+apt-get upgrade  #atualiza os pacotes instalados
+apt-get install  #instala pacotes ou programas
+apt-get reinstall   #reinstala o programa
+apt-get remove  #remove 
+apt-get autoremove   #remove automaticamente todos os pacotes não utilizados
+apt-get purge   remove os pacotes e ficheiros de configuração
+
+ Há também o apt mais atual e amigável, use o apt --help para ver as variações de comandos 
+
+apt list   #lista os pacotes baseados no nomes
+apt-search   #  busca o pacote
+apt-install     #instala
+apto install  # reinstala
+apt-remove    #remove
+apt-show     #mostra os detalhes do pacote
+apt-autoremove  #remove automaticamente todos os pacotes não utilizados
+apt-update    #atualiza a lista de pacotes
+apt-upgrade  #atualiza os pacotes
+apt full-upgrade  #atualiza o sistema, os pacotes e remove serviço completo
+
+apt list --installed   #mostra o que tem instalado na máquina
+apt list --upgradable   #mostra o pacote que pode ser atualizado
+apt search samba  #exibe resultados referente ao samba versões, funções 
+
+wget (url……)   # baixa o conteúdo da url para o diretório em que você estiver
+apt install unzip    #instala o descompactador  unzip 
+unzip main.zip   #descompactar o arquivo main.zip
+apt remove unrar  #desinstalar o descompactador unrar
+apt remove unrar -y #desinstalar sem perguntar, ideal para o uso em script
+apt edit-sources  #mostrar uma lista de todos os repositório oficiais do ubuntu, quando você precisar de um repositório externo 
+#cole o link dele dentro desse arquivo de listas e salve
+
+#Atualização do sistema operacional
+#Para evitar problemas, faça um screenshot, antes de atualizar o sistema em virtualizadores,
+apt-update    #atualiza a lista de pacotes
+apt-upgrade  #atualiza os pacotes
+#Faça os testes caso algum programa não funcione da forma devida, desligue o pc shutdown 0 e volte 
+#para o estado antes da atualização rollback. Esse prática é muito comum nos provedores de nuvem.
+
+#Gerenciamento de pacotes Fedora, Red Hat e Centos
+
+#O comando dnf é similar ao apt moderno e amigável, e o yum similar ao apt-get mais antigo menos amigável 
+#ideal para script. Use  help para saber sobre os parâmetros yum --help, dnf --help 
+
+dnf install  #instala
+dnf remove   #remove  
+yum install  #instala     
+yum remove   #remove
+dnf update   # já baixa e instala não há o upgrade 
+yum update   # já baixa e instala não há o upgrade
+
+#Instalação de arquivo debian
+#.db extensão de arquivo Debian Ubuntu   .rpm extensão para Red Hat, Fedora e Suse
+apt install ./google-chrome stable_current_amd64.deb  #irá instalar o arquivo ./google-chrome stable_current_amd64.deb
+dnf install ./google-chrome stable_current_amd64.rpm  #irá instalar o arquivo ./google-chrome stable_current_amd64.rpm
+
+
 
 
 
