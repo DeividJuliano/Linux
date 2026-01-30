@@ -270,6 +270,41 @@ yum update   # já baixa e instala não há o upgrade
 apt install ./google-chrome stable_current_amd64.deb  #irá instalar o arquivo ./google-chrome stable_current_amd64.deb
 dnf install ./google-chrome stable_current_amd64.rpm  #irá instalar o arquivo ./google-chrome stable_current_amd64.rpm
 
+#Discos, sistemas de arquivos e partições
+#Sistema de arquivo é um padrão, padrão em que o sistema operacional usa para gerenciar 
+#a forma em que os dados são armazenados e recuperados.No linux usa-se o sistema de arquivo Ext3, Ext4, XFS,  
+#No windows usa-se o ntfs porém o boot é no fat32, que é antigo porém bem utilizado principalmente em pen drive.
+#Particionamento é a divisão de um disco em partes. Cada parte ou partição é independente da outra. 
+#Cada partição pode ter um sistema de arquivos diferente.No linux as partições são definidas por números 
+#sda1 representa uma partição de um disco, sda2 2°partição de um disco. O disco físico representa-se por letras como sda, 
+#representa hd1, sdb hd2 e sdc hd3
+
+#Adicionando, um novo disco
+lsblk    #visualizar discos sda1, a disco físico 1 e o 1 é a partição, loop0, loop1, loop2… são os discos virtuais do snap
+fdisk -l    # lista os discos   dev representa o dispositivo
+du   #mostrar o espaço em disco utilizado por arquivos e diretórios
+du -sh  # Mostra o espaço em disco total de cada diretório, em formato legível (ex: 1M, 1G).
+#(top, htop, btop, ps ) #mostra os processos e tarefas, use control crtl c para sair (btop deverá ser instalados)
+
+#Particionando e formatando via terminal
+fdisk /dev/sdb   #acessar o hd, em caso de dúvidas pressione o m. Para adicionar uma nova partição pressione n, 
+#para essa partição ser primária pressione p, digite 1 para ser partição 1°,pressione enter para ser definido o setor.
+#Para salvar essas configurações pressione w enter. q para sair e ctlr c 
+mkfs.ext4 /dev/sdb    #formata o segundo hd para ext4, pressione yes, lembrando que tudo vai ser apagado
+
+#Montando e desmontando disco
+#É necessário criar um diretório para a pasta mnt
+cd /mnt/   #vai para o diretório mnt
+mkdir disco2    #cria uma pasta com o nome disco2
+mount /dev/sdb /mnt/disco2/   #faz a montagem no diretório disco2 passando por mnt, do hd sdb, para testa 
+#de um ls e aparecerá lost+found 
+umount /dev/sdb /mnt/disco2/   #faz a desmontagem no diretório disco2 passando por mnt, do hd sdb, 
+#essa ação não apagar os arquivos apenas deixa desmontado. Não é possível montar um arquivo dentro de um diretório que já possua um arquivo. 
+#Você pode criar também um diretório na raiz para e usá-lo para montar o disco, ao invés de usar o mnt.
+
+
+
+
 
 
 
