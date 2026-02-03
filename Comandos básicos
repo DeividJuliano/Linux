@@ -109,6 +109,26 @@ rm -rfv   #força para excluir e sinaliza o que está acontecendo
 rm -rfvi  #força para excluir e sinaliza o que está acontecendo para você concordar ou não
 mv -i  #renomeia informando, muito cuidado com esse comando
 
+#Copiando arquivos
+cp /home/deivid/bancodedados.mdf /disk2/  #copia o arquivo bancodedados.mdf do diretório deivid no home, para o disk2.Para conferir dê um ls
+cp /home/deivid/*.txt /disk2   #copia todos os arquivos com a extensão .txt do diretório deivid contido no home  para o disk2
+#É necessário especificar a origem do arquivo para o destino, a não ser que você já esteja na pasta do destino,
+#em um dos casos terá que indicar de onde você vai puxar ou para onde enviar
+cp ./a* /disk2/    #copia os arquivos iniciando com letra a dentro do diretório em que você esteja para o disk2, 
+#se tiver arquivos com os mesmos nomes ele vai sobrepor.
+cp ./a* /disk2/ -i  #avisa que vai sobrepor caso já tenha o arquivo, também pode ser usado no início cp -i ./a* /disk2/ 
+cp /home/deivid/* /disk2  #copia todos os arquivos do diretório deivid contido no home  para o disk2
+cp /home/deivid/* /disk2 -r #copia todos os arquivos do diretório deivid contido no home  para o disk2 recursivamente, ideal para backup 
+cp /home/deivid/* /disk2 -r -V     #copia todos os arquivos do diretório deivid contido no home  para o disk2 recursivamente, 
+#ideal para backup o -V mostra o que está acontecendo durante a cópia. Se o arquivo estiver em uso, pode ser que ele não seja copiado, 
+#pode ser que o modo verboso não esteja ativo ou não tenha permissão. Use o -V para não ficar no escuro.
+
+#Renomeando e movendo arquivo
+mv /home/deivid/bancodedados.mdf /disk2/  #move o arquivo bancodedados.mdf  do diretório deivid no home, 
+#para o disk2.Para conferir dê um ls. O mv vai seguir a mesma dinâmica do cp, com exceção do menos -r (recursivo), 
+#terá que ser feito um por um.
+mv bancodedados.mdf banco_de_dados.mdf    #renomeia o nome bancodedados.mdf para banco_de_dados.mdf
+
 #Obtendo ajuda
 ls --help    #descreve as opções do ls
 man ls   #descreve o que faz o comando ls  (em inglês) aperte q para sair
@@ -147,16 +167,13 @@ sudo chmod 600 arquivo.pem     #para proteger o arquivo .pem
 date   #mostra a data
 sudo /bin/sh /xxxxxx/script/monitor.sh enable #xxx equivale para o nome so sistema, esse comando habilita a interface gráfica,
 # em servidor oracle linux
-
 #Não é recomendado ficar logado como root, faça as configurações necessárias e depois use o usuário convencional.
-
 sudo passwd root   #concede a senha de superusuário para o usuário root, pedirá a senha que foi definida no momento da instalação. 
 #Agora defina uma senha para esse usuário
 su  #muda para superusuário em que não será necessário digitar sudo  
 su luiz  #muda para o usuário luiz
 poweroff   #desliga
 reboot     #reinicia 
-
 #É possível logar pelo Putty como root, porém essa configuração deve está liberada no ubuntu server
 
 #liberando o acesso remoto do usuário root
@@ -270,6 +287,15 @@ yum update   # já baixa e instala não há o upgrade
 apt install ./google-chrome stable_current_amd64.deb  #irá instalar o arquivo ./google-chrome stable_current_amd64.deb
 dnf install ./google-chrome stable_current_amd64.rpm  #irá instalar o arquivo ./google-chrome stable_current_amd64.rpm
 
+#Gerenciando processo
+ps    #mostra os processos, porém com pouco detalhes
+ps aux  #mostra os processos de todos os usuários,nomes e fora do console
+kill 12852   #encerra o processo do ID 12852 
+killall chrome   #mata todo os processos do chrome
+w    #informa os usuários logado
+who -a  #mostra o PID (pin, identificador) número na frente do IP  2311 (192.168.0.15)
+kill 2311  #desloga o usuário com esse PID, só root pode fazer isso
+
 #Discos, sistemas de arquivos e partições
 #Sistema de arquivo é um padrão, padrão em que o sistema operacional usa para gerenciar 
 #a forma em que os dados são armazenados e recuperados.No linux usa-se o sistema de arquivo Ext3, Ext4, XFS,  
@@ -302,6 +328,31 @@ umount /dev/sdb /mnt/disco2/   #faz a desmontagem no diretório disco2 passando 
 #essa ação não apagar os arquivos apenas deixa desmontado. Não é possível montar um arquivo dentro de um diretório que já possua um arquivo. 
 #Você pode criar também um diretório na raiz para e usá-lo para montar o disco, ao invés de usar o mnt.
 
+#Montando os discos automaticamente
+#Sempre que iniciar o pc será necessário fazer processo de montagem, para saber informações sobre os discos use o comando lsblk 
+#Para montar o arquivo de forma automática será necessário editar o arquivo fstab
+nano /etc/fstab     #Dentro do nano, no final do texto digite
+/dev/sdb /mnt ext4 defaults 0 0  #salve usando o ctrl o ctrl x, teste reiniciando o pc.
+
+Copiando arquivos
+
+cp /home/deivid/bancodedados.mdf /disk2/  #copia o arquivo bancodedados.mdf  do diretório deivid no home, para o disk2.Para conferir dê um ls
+cp /home/deivid/*.txt /disk2   #copia todos os arquivos com a extensão .txt do diretório deivid contido no home  para o disk2
+
+É necessário especificar a origem do arquivo para o destino, a não ser que você já esteja na pasta do destino, em um dos casos terá que indicar de onde você vai puxar ou para onde enviar
+
+cp ./a* /disk2/    #copia os arquivos iniciando com letra a dentro do diretório em que você esteja para o disk2, se tiver arquivos com os mesmos nomes ele vai sobrepor.
+
+cp ./a* /disk2/ -i  #avisa que vai sobrepor caso já tenha o arquivo, também pode ser usado no início cp -i ./a* /disk2/ 
+cp /home/deivid/* /disk2  #copia todos os arquivos do diretório deivid contido no home  para o disk2
+cp /home/deivid/* /disk2 -r #copia todos os arquivos do diretório deivid contido no home  para o disk2 recursivamente, ideal para backup 
+cp /home/deivid/* /disk2 -r -V     #copia todos os arquivos do diretório deivid contido no home  para o disk2 recursivamente, ideal para backup o -V mostra o que está acontecendo durante a cópia. Se o arquivo estiver em uso, pode ser que ele não seja copiado, pode ser que o modo verboso não esteja ativo ou não tenha permissão. Use o -V para não ficar no escuro.
+
+Renomeando e movendo arquivo
+
+mv /home/deivid/bancodedados.mdf /disk2/  #move o arquivo bancodedados.mdf  do diretório deivid no home, para o disk2.Para conferir dê um ls
+O mv vai seguir a mesma dinâmica do cp, com exceção do menos -r (recursivo), terá que ser feito um por um.
+mv bancodedados.mdf banco_de_dados.mdf    #renomeia o nome bancodedados.mdf para banco_de_dados.mdf
 
 
 
