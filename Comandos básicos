@@ -355,11 +355,15 @@ O mv vai seguir a mesma dinâmica do cp, com exceção do menos -r (recursivo), 
 mv bancodedados.mdf banco_de_dados.mdf    #renomeia o nome bancodedados.mdf para banco_de_dados.mdf
 
 #wsl aplicação que permite rodar linux no windows (11,10)
-wsl --list #informa que tem instalado na sua máquina
-wsl --unregister Ubuntu # desinstala o wsl ubuntu
-wsl --list --online #mostra as distribuições disponiveis para ser instalada
-wsl --install -d Ubuntu-24.04 #instala a versão ubuntu24.04
-
+wsl --list   #informa que tem instalado na sua máquina
+wsl --unregister Ubuntu   #desinstala o wsl ubuntu
+wsl --list --online   #mostra as distribuições disponíveis para ser instalada
+wsl --install -d Ubuntu-24.04   #instala a versão ubuntu24.04 assim que instala já fica disponível para uso
+wsl --install  #instal a o wsl padrão Ubuntu
+wsl --help      #informa parametros e informações de comandos referente ao wsl
+wsl   #comando para acessar o wsl de forma remota
+#É possível exportar um disco virtual com aplicações e arquivos para usar em outro pc geralmente ele fica neste caminho
+# C:\Users\SeuUsuario\AppData\Local\Packages\Distro_Nome\LocaIstate\ext4.vhdx
 
 
 
