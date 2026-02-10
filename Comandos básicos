@@ -238,12 +238,12 @@ apt-get remove  #remove
 apt-get autoremove   #remove automaticamente todos os pacotes não utilizados
 apt-get purge   remove os pacotes e ficheiros de configuração
 
- Há também o apt mais atual e amigável, use o apt --help para ver as variações de comandos 
+ #Há também o apt mais atual e amigável, use o apt --help para ver as variações de comandos 
 
 apt list   #lista os pacotes baseados no nomes
 apt-search   #  busca o pacote
 apt-install     #instala
-apto install  # reinstala
+apt-install  # reinstala
 apt-remove    #remove
 apt-show     #mostra os detalhes do pacote
 apt-autoremove  #remove automaticamente todos os pacotes não utilizados
@@ -334,12 +334,13 @@ umount /dev/sdb /mnt/disco2/   #faz a desmontagem no diretório disco2 passando 
 nano /etc/fstab     #Dentro do nano, no final do texto digite
 /dev/sdb /mnt ext4 defaults 0 0  #salve usando o ctrl o ctrl x, teste reiniciando o pc.
 
-Copiando arquivos
+#Copiando arquivos
 
 cp /home/deivid/bancodedados.mdf /disk2/  #copia o arquivo bancodedados.mdf  do diretório deivid no home, para o disk2.Para conferir dê um ls
 cp /home/deivid/*.txt /disk2   #copia todos os arquivos com a extensão .txt do diretório deivid contido no home  para o disk2
 
-É necessário especificar a origem do arquivo para o destino, a não ser que você já esteja na pasta do destino, em um dos casos terá que indicar de onde você vai puxar ou para onde enviar
+#É necessário especificar a origem do arquivo para o destino, a não ser que você já esteja na pasta do destino, 
+#em um dos casos terá que indicar de onde você vai puxar ou para onde enviar
 
 cp ./a* /disk2/    #copia os arquivos iniciando com letra a dentro do diretório em que você esteja para o disk2, se tiver arquivos com os mesmos nomes ele vai sobrepor.
 
@@ -348,13 +349,16 @@ cp /home/deivid/* /disk2  #copia todos os arquivos do diretório deivid contido 
 cp /home/deivid/* /disk2 -r #copia todos os arquivos do diretório deivid contido no home  para o disk2 recursivamente, ideal para backup 
 cp /home/deivid/* /disk2 -r -V     #copia todos os arquivos do diretório deivid contido no home  para o disk2 recursivamente, ideal para backup o -V mostra o que está acontecendo durante a cópia. Se o arquivo estiver em uso, pode ser que ele não seja copiado, pode ser que o modo verboso não esteja ativo ou não tenha permissão. Use o -V para não ficar no escuro.
 
-Renomeando e movendo arquivo
-
+#Renomeando e movendo arquivo
 mv /home/deivid/bancodedados.mdf /disk2/  #move o arquivo bancodedados.mdf  do diretório deivid no home, para o disk2.Para conferir dê um ls
 O mv vai seguir a mesma dinâmica do cp, com exceção do menos -r (recursivo), terá que ser feito um por um.
 mv bancodedados.mdf banco_de_dados.mdf    #renomeia o nome bancodedados.mdf para banco_de_dados.mdf
 
-
+#wsl aplicação que permite rodar linux no windows (11,10)
+wsl --list #informa que tem instalado na sua máquina
+wsl --unregister Ubuntu # desinstala o wsl ubuntu
+wsl --list --online #mostra as distribuições disponiveis para ser instalada
+wsl --install -d Ubuntu-24.04 #instala a versão ubuntu24.04
 
 
 
