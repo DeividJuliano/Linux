@@ -363,8 +363,14 @@ wsl --install  #instal a o wsl padrão Ubuntu
 wsl --help      #informa parametros e informações de comandos referente ao wsl
 wsl   #comando para acessar o wsl de forma remota
 #É possível exportar um disco virtual com aplicações e arquivos para usar em outro pc geralmente ele fica neste caminho
-# C:\Users\SeuUsuario\AppData\Local\Packages\Distro_Nome\LocaIstate\ext4.vhdx
+ C:\Users\SeuUsuario\AppData\Local\Packages\Distro_Nome\LocaIstate\ext4.vhdx
 
+#Exportar a distribuição
+wsl --shutdown
+wsl --export Ubuntu C:\Backup\ubuntu_backup.tar
+
+#Importar
+wsl --import Ubuntu C:\WSL\Ubuntu C:\Caminho\Do\VHDX   (34)
 
 
 
