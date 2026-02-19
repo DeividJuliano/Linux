@@ -12,6 +12,8 @@ cd /var/lib/git   #vai para o git passando pelos diretórios raiz,var e lib
 #O tab duas vezes mostra os comandos que você pode usar ou preenche na tela
 ls | more    #abre a opção de ver todos os arquivos que não cabe na tela toda, aperte enter caso apareça more, para sair use o ctrl c
 ls nome do arquivo    #lista o arquivo com esse nome
+ls *.conf   #mostra todos os arquivos com a extensão .conf
+ls *.conf -lh   #mostra de forma mais humana, amigável
 touch arquivo.txt   #Criar um arquivo vazio se for criar em um diretório do sistema como /etc é necessário usar o sudo. 
 #Pode criar arquivo no diretório home, onde fica os usuários
 cd ~    #vai para o diretório home
@@ -98,8 +100,8 @@ mkdir ‘Meus documentos’  #cria um diretório aceitando espaço, se não colo
 
 
 #Excluindo arquivos e diretórios
-rmdir pasta3.txt    #exclui o diretório pasta3.txt, se for um diretório com conteúdo ele não deixa excluir será necessário limpar a pasta. 
-#Também não é possível apagar um diretório se você estiver dentro dele, é necessário sair.
+rmdir pasta3.txt    #exclui o diretório pasta3.txt, se for um diretório com conteúdo ele não deixa excluir será necessário limpar a pasta.O rm
+#apaga sem enviar para a lixeira, também não é possível apagar um diretório se você estiver dentro dele, é necessário sair.
 rm arquivo2.txt     #exclui o arquivo arquivo2.txt
 rm arquivo*     #apagar todos arquivos com esse nome
 rmdir Alunos Professores    #apaga os 2 diretórios de uma só vez
@@ -155,6 +157,9 @@ sudo    #invoca a permissão de superusuário
 sudo cat /etc/sudoers  #arquivo de configuração que mostra os privilégios dos usuários
 tail -f /var/log/syslog    #comando para visualizar erros
 shutdown 0  # desliga no mesmo instante
+top #visualizar os processos e sessões, pode instalar o htop e btop que faz a mesma coisa
+kill #encerra o processo
+ps #mostra os processos   (102)
 sudo apt-get install openssh-server  #instala o programa
 sudo systemctl status ssh  #saber se o ssh está operante 
 sudo ufw status    #saber se o firewall está operante
@@ -188,7 +193,7 @@ systemctl restart sshd    #reinicia o serviço sshd e agora o acesso remoto esta
 vi leiame.txt     #se existir ele abre o arquivo, se não, ele cria e abre no editor vi (new file). 
 #Dentro do vi siga essas dicas pressione i modo de edição (insert). faça as alterações ou digite, quando finalizar sua tarefa 
 #pressione esc para sair do modo de inserção, para ativar o menu pressione : para sair salvando digite wq e enter . 
-#pronto seu texto está salvo.
+#pronto seu texto está salvo. o VI é o editor padrão do windows.
 cat nome do arquivo   #visualizar o arquivo
 
 nano leiame.txt     #se existir, ele abre o arquivo, se não, ele cria e abre no editor nano, o nano já têm explicação do seu uso 
@@ -370,7 +375,7 @@ wsl --shutdown
 wsl --export Ubuntu C:\Backup\ubuntu_backup.tar
 
 #Importar
-wsl --import Ubuntu C:\WSL\Ubuntu C:\Caminho\Do\VHDX   (34)
+wsl --import Ubuntu C:\WSL\Ubuntu C:\Caminho\Do\VHDX   
 
 
 
