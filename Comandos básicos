@@ -3,6 +3,7 @@ pwd    #mostra aonde você está
 cd /    #muda para a pasta raíz do seu disco, só use o barra se arquivo estiver na raiz, caso contrário use sem cd log
 ./     #indica onde você está
 ls      #mostra os arquivos do diretório (cor azul)
+ls -l #mostra os arquivos com mais detalhes (ls -la, ll, ls -a, ls -al, ls -lh)
 cd /var   # muda para o diretório var, se você estiver no diretório, pode usar o cd var
 cd ..     #volta para o diretório anterior
 cd ../backups   #volta e vai para o diretório backups
@@ -359,12 +360,12 @@ mv /home/deivid/bancodedados.mdf /disk2/  #move o arquivo bancodedados.mdf  do d
 O mv vai seguir a mesma dinâmica do cp, com exceção do menos -r (recursivo), terá que ser feito um por um.
 mv bancodedados.mdf banco_de_dados.mdf    #renomeia o nome bancodedados.mdf para banco_de_dados.mdf
 
-#wsl aplicação que permite rodar linux no windows (11,10)
+#wsl aplicação que permite rodar linux no windows (36:00)
 wsl --list   #informa que tem instalado na sua máquina
 wsl --unregister Ubuntu   #desinstala o wsl ubuntu
 wsl --list --online   #mostra as distribuições disponíveis para ser instalada
 wsl --install -d Ubuntu-24.04   #instala a versão ubuntu24.04 assim que instala já fica disponível para uso
-wsl --install  #instal a o wsl padrão Ubuntu
+wsl --install  #instala a o wsl padrão Ubuntu
 wsl --help      #informa parametros e informações de comandos referente ao wsl
 wsl   #comando para acessar o wsl de forma remota
 #É possível exportar um disco virtual com aplicações e arquivos para usar em outro pc geralmente ele fica neste caminho
