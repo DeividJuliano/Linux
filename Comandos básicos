@@ -107,10 +107,10 @@ rm arquivo2.txt     #exclui o arquivo arquivo2.txt
 rm arquivo*     #apagar todos arquivos com esse nome
 rmdir Alunos Professores    #apaga os 2 diretórios de uma só vez
 rmdir ‘Meus Documentos’    #apagar o diretório Meus Documentos
-rm -rf  Planilhas/    #apagar de forma recursiva tudo dentro de do diretório Planilhas e tudo que há dentro delas 
-rm -rfv   #força para excluir e sinaliza o que está acontecendo 
-rm -rfvi  #força para excluir e sinaliza o que está acontecendo para você concordar ou não
-mv -i  #renomeia informando, muito cuidado com esse comando
+rm -Rf  Planilhas/    #apagar de forma recursiva tudo dentro de do diretório Planilhas e tudo que há dentro delas 
+rm -Rfv   #força para excluir e sinaliza o que está acontecendo 
+rm -Rfvi  #força para excluir e sinaliza o que está acontecendo para você concordar ou não
+mv -i  #renomeia informando, muito cuidado com esse comando  (rm -Rf /) apaga todas as pasta do sistema
 
 #Copiando arquivos
 cp /home/deivid/bancodedados.mdf /disk2/  #copia o arquivo bancodedados.mdf do diretório deivid no home, para o disk2.Para conferir dê um ls
@@ -158,7 +158,8 @@ sudo    #invoca a permissão de superusuário
 sudo cat /etc/sudoers  #arquivo de configuração que mostra os privilégios dos usuários
 tail -f /var/log/syslog    #comando para visualizar erros
 shutdown 0  # desliga no mesmo instante
-top #visualizar os processos e sessões, pode instalar o htop e btop que faz a mesma coisa
+top #visualizar os processos e sessões, pode instalar o htop e btop que faz a mesma coisa 
+#(top, htop, btop, ps ) #mostra os processos e tarefas, use control crtl c para sair (btop deverá ser instalados)
 kill #encerra o processo
 ps #mostra os processos   (102)
 sudo apt-get install openssh-server  #instala o programa
@@ -301,6 +302,7 @@ killall chrome   #mata todo os processos do chrome
 w    #informa os usuários logado
 who -a  #mostra o PID (pin, identificador) número na frente do IP  2311 (192.168.0.15)
 kill 2311  #desloga o usuário com esse PID, só root pode fazer isso
+df #mostra o uso de cada diretório que tenha uma aplicação rodando (df -h) (10;30)
 
 #Discos, sistemas de arquivos e partições
 #Sistema de arquivo é um padrão, padrão em que o sistema operacional usa para gerenciar 
@@ -360,7 +362,7 @@ mv /home/deivid/bancodedados.mdf /disk2/  #move o arquivo bancodedados.mdf  do d
 O mv vai seguir a mesma dinâmica do cp, com exceção do menos -r (recursivo), terá que ser feito um por um.
 mv bancodedados.mdf banco_de_dados.mdf    #renomeia o nome bancodedados.mdf para banco_de_dados.mdf
 
-#wsl aplicação que permite rodar linux no windows (52:00)
+#wsl aplicação que permite rodar linux no windows 
 wsl --list   #informa que tem instalado na sua máquina
 wsl --unregister Ubuntu   #desinstala o wsl ubuntu
 wsl --list --online   #mostra as distribuições disponíveis para ser instalada
