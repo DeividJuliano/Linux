@@ -194,7 +194,7 @@ systemctl restart sshd    #reinicia o serviço sshd e agora o acesso remoto esta
 vi leiame.txt     #se existir ele abre o arquivo, se não, ele cria e abre no editor vi (new file). 
 #Dentro do vi siga essas dicas pressione i modo de edição (insert). faça as alterações ou digite, quando finalizar sua tarefa 
 #pressione esc para sair do modo de inserção, para ativar o menu pressione : para sair salvando digite wq e enter . 
-#pronto seu texto está salvo. o VI é o editor padrão do windows.
+#pronto seu texto está salvo. o VI é o editor padrão do Linux.
 cat nome do arquivo   #visualizar o arquivo
 
 nano leiame.txt     #se existir, ele abre o arquivo, se não, ele cria e abre no editor nano, o nano já têm explicação do seu uso 
@@ -360,7 +360,7 @@ mv /home/deivid/bancodedados.mdf /disk2/  #move o arquivo bancodedados.mdf  do d
 O mv vai seguir a mesma dinâmica do cp, com exceção do menos -r (recursivo), terá que ser feito um por um.
 mv bancodedados.mdf banco_de_dados.mdf    #renomeia o nome bancodedados.mdf para banco_de_dados.mdf
 
-#wsl aplicação que permite rodar linux no windows (42:00)
+#wsl aplicação que permite rodar linux no windows (52:00)
 wsl --list   #informa que tem instalado na sua máquina
 wsl --unregister Ubuntu   #desinstala o wsl ubuntu
 wsl --list --online   #mostra as distribuições disponíveis para ser instalada
