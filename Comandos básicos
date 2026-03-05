@@ -30,7 +30,7 @@ locate nomedoarquivo  #talvez seja necessário instalar
 ls -R /etc/   #lista os arquivos de forma recursiva informando seu conteúdo ls -r
 tree 
 which git  #mostra o caminho do arquivo
-du ?  # 
+du #mostra o que cada diretório está consumindo de espaço (106)
 
 #Criando e excluindo usuários
 #Para esses comandos é necessário está como usuário root ou use o sudo
