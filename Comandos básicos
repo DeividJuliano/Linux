@@ -56,6 +56,7 @@ cat /etc/passwd   #informações dos usuários criado
 
 #Adicionando usuário a grupos
 usermod -aG adm,sudo mariana   #adiciona a mariana no grupo adm e grupo sudo sem remover os grupos existentes, talvez seja necessário
+sudo usermod -aG docker ubuntu   #adiciona o usuário ubuntu ao grupo docker
 #logar novamente para as configurações ativar nas conta, 
 cat /etc/group  #comando para visualizar os grupos
 
@@ -343,7 +344,7 @@ umount /dev/sdb /mnt/disco2/   #faz a desmontagem no diretório disco2 passando 
 nano /etc/fstab     #Dentro do nano, no final do texto digite
 /dev/sdb /mnt ext4 defaults 0 0  #salve usando o ctrl o ctrl x, teste reiniciando o pc.
 
-#Copiando arquivos  (105)
+#Copiando arquivos  (112)
 
 cp /home/deivid/bancodedados.mdf /disk2/  #copia o arquivo bancodedados.mdf  do diretório deivid no home, para o disk2.Para conferir dê um ls
 cp /home/deivid/*.txt /disk2   #copia todos os arquivos com a extensão .txt do diretório deivid contido no home  para o disk2
