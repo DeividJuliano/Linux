@@ -1,4 +1,4 @@
-#Navegando pelo sistema de arquivo
+#Navegando pelo sistema de arquivo  (21:00)
 pwd    #mostra aonde você está
 cd /    #muda para a pasta raíz do seu disco, só use o barra se arquivo estiver na raiz, caso contrário use sem cd log
 ./     #indica onde você está
