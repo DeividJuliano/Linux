@@ -1,14 +1,19 @@
-#Navegando pelo sistema de arquivo  (21:00)
+#Navegando pelo sistema de arquivo  (37:00)
 pwd    #mostra aonde você está
 cd /    #muda para a pasta raíz do seu disco, só use o barra se arquivo estiver na raiz, caso contrário use sem cd log
 ./     #indica onde você está
 ls      #mostra os arquivos do diretório (cor azul)
 ls -l #mostra os arquivos com mais detalhes (ls -la, ll, ls -a, ls -al, ls -lh)
+man ls #instrução sobre o comando ls e parametros que podem ser usados
+ls --help # semelhante ao man porém mais compacto
 cd /var   # muda para o diretório var, se você estiver no diretório, pode usar o cd var
-cd ..     #volta para o diretório anterior
+cd ..     #volta para o diretório anterior cd . permanece no mesmo diretório
 cd ../backups   #volta e vai para o diretório backups
-cd /var/lib    #abre o lib dentro do var
+cd /var/lib    #acessa o diretório lib dentro do var
+cd /home/deivid/ #acessa o diretório deivid
 cd /var/lib/git   #vai para o git passando pelos diretórios raiz,var e lib
+ctrl l #limpa tela do terminal 
+clear #limpa a tela
 
 #O tab duas vezes mostra os comandos que você pode usar ou preenche na tela
 ls | more    #abre a opção de ver todos os arquivos que não cabe na tela toda, aperte enter caso apareça more, para sair use o ctrl c
@@ -23,7 +28,7 @@ cat nome do arquivo   #visualizar o arquivo
 
 #Localiza arquivos
 ls /sys   #lista os arquivos contidos no diretório sys ls /~
-ls /sys/kernel   #lista os arquivos que estão no kernel que está dentro do sys
+ls /sys/kernel   #lista os arquivos que estão no kernel que está dentro do sys sem você sair do diretório atual
 ls /sys/kernel/p*  #lista os arquivos que começam com p que está dentro do kernel,que está dentro sys, ou seja de forma recursiva.
 find / -name  arq*    #busca o arquivo onde você está pelo nome ou pelo filtro de pesquisa que você indicar
 locate nomedoarquivo  #talvez seja necessário instalar  
@@ -245,6 +250,7 @@ apt-get reinstall   #reinstala o programa
 apt-get remove  #remove 
 apt-get autoremove   #remove automaticamente todos os pacotes não utilizados
 apt-get purge   remove os pacotes e ficheiros de configuração
+uname -a #saber a versão do sistema operacional.
 
  #Há também o apt mais atual e amigável, use o apt --help para ver as variações de comandos 
 
