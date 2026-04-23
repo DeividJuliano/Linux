@@ -1,4 +1,4 @@
-#Navegando pelo sistema de arquivo  (37:00)
+#Navegando pelo sistema de arquivo  (47:00)
 pwd    #mostra aonde você está
 cd /    #muda para a pasta raíz do seu disco, só use o barra se arquivo estiver na raiz, caso contrário use sem cd log
 ./     #indica onde você está
@@ -35,7 +35,7 @@ locate nomedoarquivo  #talvez seja necessário instalar
 ls -R /etc/   #lista os arquivos de forma recursiva informando seu conteúdo ls -r
 tree 
 which git  #mostra o caminho do arquivo
-du #mostra o que cada diretório está consumindo de espaço (106)
+du #mostra o que cada diretório está consumindo de espaço 
 
 #Criando e excluindo usuários
 #Para esses comandos é necessário está como usuário root ou use o sudo
@@ -207,6 +207,8 @@ cat nome do arquivo   #visualizar o arquivo
 nano leiame.txt     #se existir, ele abre o arquivo, se não, ele cria e abre no editor nano, o nano já têm explicação do seu uso 
 #na parte inferior do editor o acento chapéu ^ é o ctrl. ctrl o (salvar, enter para continuar com o mesmo nome)  ctrl x  para sai. 
 #lembre-se de indicar o caminho, para que o arquivo salvo não vá para outro local
+#para encontrar uma palavra ctrl w e digite a palavra e enter, para encontrar em um voltando ctrl q e enter
+# ctrl k apaga/cortar a linha inteira em que está o cursor ctrl p colar crtl c informa aonde você está.
 
 #Shell Script Criando usuários em lote.Tarefa para ser usado de forma automática 
 cd /   #vai para a raíz
