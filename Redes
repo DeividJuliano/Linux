@@ -1,9 +1,10 @@
-ip address show
+ip address show                  (105:00)
 netstat -nr
 netstat -r    #rotas ativas
 netstat -tulpn   #saber serviços que estão rodando
 sudo ss -tuln   #saber serviços que estão rodando
 ifconfig  
+ip a
 ifconfig -a  #mostra todas as interfaces, incluindo as inativas
 ifconfig enp0s8 down  #desligar interface
 ifconfig enp0s8 up  #ligar interface
@@ -19,6 +20,7 @@ ping -s 1500 192.168.199.1    #força pacotes de 1500
 ping -i 4  8.8.8.8 ping   #a cada 4 segundos
 ifconfig ethx 0 xxxx/xx #forma mais antiga
 ifconfig enp0s3 x.x.x.x netmask 255.255.255.0  #adicionar ip a interface, algumas distribuição essa configuração não é permanente, use o netplan
+ifconfig enp0s3 x.x.x.x/24
 ip addr add 172.16.25.100/24 dev enp0s8   #adiciona ip na placa, em algumas distribuições será necessário criar interface
 ip addr del 172.16.25.100/24 dev enp0s8   #remove o ip na placa
 
@@ -37,8 +39,21 @@ shutdown -h now #desligar
 sudo poweroff    #desligar servidor Ubuntu
 ssh nomeusuario@ip-remoto #para acessar um sevidor, host
 ip addr  #mostrar o ip
+ssh root@192.168.50.10 #acessar um a maquina com esse ip, irá pedir a senha
+telnet root@192.168.50.10  #testar porta 
 sudo cat /etc/NetworkManager/system-connections/Wired\ connection\ 1   #mostrar configurações de redes ?
-cat /etc/network/interfaces   #configurações de redes
+cat /etc/network/interfaces   #configurações de redes use o nano ou o vim para alterar o cat só visualiza.
+#exemplo de configuração estática
+
+auto ens3
+iface ens3 inet static
+address 192.168.0.77
+network 255.255.255.0
+gateway 192.168.0.1 
+
+#salve ctrl o e entere x, reinicie reboot
+
+
 cat /etc/net   #visualizar arquivos de configurações no hosts
 cat /etc/netplan/01-netcfg.yaml #vizualizar as configuraçoes do arquivo 01-netcfg.yaml, netplan é o mais aconselhável para uso
 ip route show
@@ -46,8 +61,9 @@ resolvectl   #saber onde resolve o dns
 last #informações de quem logou
 w   #informações de quem logou de forma mais precisa
 cat /etc/hosts  #saber os dispositivos
-systemctl stop NetworkManager.service   #derrubar o servicço de rede em segundo plano para ele não voltar mais as configurações, use o flush para limpar as configurações.
-
+systemctl stop NetworkManager.service   #derrubar o servicço de rede em segundo plano para ele não voltar mais as configurações, 
+#use o flush para limpar as configurações.
+dhcliente ens4  #pega ip dhcp na interface 4
 
  
 
