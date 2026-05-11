@@ -1,4 +1,4 @@
-ip address show                  (107:00)
+ip address show                  (113:00)
 netstat -nr
 netstat -r    #rotas ativas
 netstat -tulpn   #saber serviços que estão rodando
