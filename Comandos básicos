@@ -1,4 +1,4 @@
-#Navegando pelo sistema de arquivo  (47:00)
+#Navegando pelo sistema de arquivo  (117:00)
 pwd    #mostra aonde você está
 cd /    #muda para a pasta raíz do seu disco, só use o barra se arquivo estiver na raiz, caso contrário use sem cd log
 ./     #indica onde você está
@@ -253,6 +253,7 @@ apt-get remove  #remove
 apt-get autoremove   #remove automaticamente todos os pacotes não utilizados
 apt-get purge   remove os pacotes e ficheiros de configuração
 uname -a #saber a versão do sistema operacional.
+apt-cache search zabbix  #informa as aplicações que estão vinculada ao zabbix
 
  #Há também o apt mais atual e amigável, use o apt --help para ver as variações de comandos 
 
