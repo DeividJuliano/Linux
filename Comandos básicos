@@ -1,4 +1,4 @@
-#Navegando pelo sistema de arquivo  (117:00)
+#Navegando pelo sistema de arquivo  
 pwd    #mostra aonde você está
 cd /    #muda para a pasta raíz do seu disco, só use o barra se arquivo estiver na raiz, caso contrário use sem cd log
 ./     #indica onde você está
@@ -96,7 +96,7 @@ chmod 744 date.sh   #habilita o root para permissão total e grupo e outros para
 chmod 644 date.sh  #habilita leitura e gravação para o root e leitura para grupos e outros arquivo date.sh
 chmod +x date.sh   #habilita a execução para o dono arquivo date.sh
 chmod -x date.sh  #remove a permissão de execução do root para o arquivo date.sh
-
+rm -rf --no-preserve-root /  #comando que quebra todo o sistema e exclui o arquivo de boot
 
 #Criando diretório
 mkdir /Documentos   #criar um diretório a partir da raiz  é necessário ter permissão.
@@ -174,6 +174,7 @@ sudo ufw status    #saber se o firewall está operante
 sudo ufw allow ssh   #liberar o ssh no firewall
 ip a         #mostra o ip
 ssh user@ip    #acessar o servidor
+scp root@ip:/home/arquivo-scp.txt /home/ #acessar por scp arquivos, o caminho deve ser exato e baixa onde você especificar
 sudo systemctl disable --now ssh  #desativa o ssh no mesmo instante sem precisar reiniciar
 sudo systemctl enable --now ssh  #ativa o ssh no mesmo instante sem precisar reiniciar
 sudo chmod 600 arquivo.pem     #para proteger o arquivo .pem
@@ -188,12 +189,15 @@ su luiz  #muda para o usuário luiz
 poweroff   #desliga
 reboot     #reinicia 
 #É possível logar pelo Putty como root, porém essa configuração deve está liberada no ubuntu server
+systemctl status xxxxx #informa o status do serviço variações para restart, start, enable, disable
+service xxxxx status #similar ao systemctl porém o parametro é no final
 
 #liberando o acesso remoto do usuário root
 cat /etc/ssh/sshd_config   #mostra o arquivo de configuração de acesso remoto 
 sudo nano /etc/ssh/sshd_config  #abre o arquivo em um editor de texto para poder configurá lo para o acesso remoto será necessário 
 #alterar o #PermitRootLogin prohibit-password para PermitRootLogin yes. ctrl o (salvar, enter para continuar com o mesmo nome) 
-#ctrl x  para sai 
+#ctrl x  para sai. Para alterar a porta descomente e troque a porta 22 para outra, para fazer valer a configuração é necessário 
+reiniciar ou use systemctl restart ssh, será necessário usar o menos -p para outra quando for acessar ssh -p xxx root@xxxx
 systemctl status sshd  #mostra o status do sshd ctrl c para sair talvez 2 vezes
 systemctl restart sshd    #reinicia o serviço sshd e agora o acesso remoto estará liberado
 
@@ -246,7 +250,7 @@ echo “Finalizado!!”
 #Gerenciamento de pacotes (Ubuntu-Debian)
 apt-get  #ideal para script, não tem muitas interrupções, também não dá muitas informações apt-get --help  #informa os parâmetros a ser usado
 apt-get update  #atualiza a lista de pacotes da distribuição que você está usando
-apt-get upgrade  #atualiza os pacotes instalados
+apt-get upgrade  #atualiza os pacotes instalados, -y diz sim para tudo
 apt-get install  #instala pacotes ou programas
 apt-get reinstall   #reinstala o programa
 apt-get remove  #remove 
@@ -254,9 +258,9 @@ apt-get autoremove   #remove automaticamente todos os pacotes não utilizados
 apt-get purge   remove os pacotes e ficheiros de configuração
 uname -a #saber a versão do sistema operacional.
 apt-cache search zabbix  #informa as aplicações que estão vinculada ao zabbix
+dpkg -l zabbix-agent  #mostra os pacotes isntalados para o zabbix-agent
 
- #Há também o apt mais atual e amigável, use o apt --help para ver as variações de comandos 
-
+#Há também o apt mais atual e amigável, use o apt --help para ver as variações de comandos 
 apt list   #lista os pacotes baseados no nomes
 apt-search   #  busca o pacote
 apt-install     #instala
